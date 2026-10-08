@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>POPO Service - Dịch vụ mua sắm & PewPew App</title>
+<meta name="description" content="POPO Service - dịch vụ mua sắm. Theo dõi và mua hàng qua các kênh TikTok của POPO, tải PewPew App để giải trí, mua sắm và kết nối cộng đồng PewPew.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ctypopo.com/">
+<meta property="og:title" content="POPO Service - Dịch vụ mua sắm & PewPew App">
+<meta property="og:description" content="Theo dõi và mua hàng cùng POPO Service. Tải PewPew App miễn phí trên App Store.">
+<meta property="og:image" content="https://ctypopo.com/assets/popo-logo.jpg">
+<meta name="theme-color" content="#b51f2c">
+<link rel="icon" href="assets/popo-logo.jpg">
+<link rel="apple-touch-icon" href="assets/popo-logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #b51f2c;
+    --red-deep: #8f1520;
+    --orange: #f2672a;
+    --ink: #1c1a1b;
+    --muted: #5f5a5c;
+    --line: #ece6e4;
+    --bg: #ffffff;
+    --soft: #fbf5f3;
+    --radius: 18px;
+    --max: 1120px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { overflow-x: clip; }
+  body {
+    margin: 0;
+    font-family: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(255,255,255,.92);
+    backdrop-filter: saturate(160%) blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; letter-spacing: .02em; }
+  .brand img { width: 40px; height: 40px; border-radius: 10px; }
+  .brand span small { display: block; font-weight: 500; font-size: 11px; letter-spacing: .08em; color: var(--muted); text-transform: uppercase; line-height: 1.1; }
+  .menu { display: flex; gap: 26px; font-size: 15px; font-weight: 500; }
+  .menu a { text-decoration: none; color: var(--muted); }
+  .menu a:hover { color: var(--red); }
+  @media (max-width: 760px) { .menu { display: none; } }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 22px; border-radius: 999px;
+    font-weight: 600; font-size: 15px; text-decoration: none;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--red); color: #fff; box-shadow: 0 8px 22px rgba(181,31,44,.25); }
+  .btn-ghost { border: 1.5px solid var(--line); color: var(--ink); background: #fff; }
+  .btn-store { background: #111; color: #fff; padding: 10px 20px; }
+  .btn-store svg { width: 22px; height: 22px; fill: #fff; }
+  .btn-store span { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
+  .btn-store small { font-size: 11px; font-weight: 500; opacity: .85; }
+  .btn-store b { font-size: 17px; }
+
+  /* Hero */
+  .hero {
+    background:
+      radial-gradient(900px 420px at 85% -10%, rgba(242,103,42,.14), transparent 60%),
+      radial-gradient(700px 380px at -10% 110%, rgba(181,31,44,.10), transparent 60%),
+      var(--soft);
+    padding: 72px 0 84px;
+  }
+  .hero-grid { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); gap: 48px; align-items: center; }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--red); background: #fff; border: 1px solid #f1d9d7; padding: 6px 14px; border-radius: 999px; }
+  h1 { font-size: clamp(34px, 5vw, 56px); line-height: 1.12; margin: 18px 0 16px; letter-spacing: -.01em; }
+  h1 em { font-style: normal; color: var(--red); }
+  .lead { font-size: 18px; color: var(--muted); max-width: 560px; margin: 0 0 28px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+  .hero-logo { background: #fff; border-radius: 28px; padding: 36px; box-shadow: 0 30px 60px -30px rgba(60,20,20,.25); border: 1px solid var(--line); max-width: 380px; justify-self: center; }
+  @media (max-width: 860px) {
+    .hero { padding: 48px 0 56px; }
+    .hero-grid { grid-template-columns: minmax(0,1fr); gap: 32px; }
+    .hero-logo { max-width: 240px; padding: 24px; order: -1; }
+  }
+
+  /* Sections */
+  section { padding: 84px 0; }
+  .sec-head { max-width: 680px; margin-bottom: 40px; }
+  .sec-head .kicker { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--red); }
+  h2 { font-size: clamp(28px, 3.4vw, 40px); line-height: 1.2; margin: 8px 0 12px; }
+  .sec-head p { color: var(--muted); font-size: 17px; margin: 0; }
+  @media (max-width: 760px) { section { padding: 60px 0; } }
+
+  /* Channels */
+  .channels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .channel {
+    display: flex; flex-direction: column; gap: 14px;
+    padding: 24px; border-radius: var(--radius);
+    border: 1px solid var(--line); background: #fff; text-decoration: none;
+    transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+  }
+  .channel:hover { border-color: #f0c9c5; box-shadow: 0 16px 34px -20px rgba(181,31,44,.35); transform: translateY(-2px); }
+  .channel .tt { width: 44px; height: 44px; border-radius: 12px; background: #111; display: grid; place-items: center; }
+  .channel .tt svg { width: 22px; height: 22px; fill: #fff; }
+  .channel h3 { margin: 0; font-size: 18px; }
+  .channel .handle { color: var(--muted); font-size: 14px; }
+  .channel .go { margin-top: auto; font-size: 14px; font-weight: 600; color: var(--red); }
+  @media (max-width: 960px) { .channels { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .channels { grid-template-columns: 1fr; } }
+
+  /* App */
+  .app { background: linear-gradient(180deg, #fff 0%, var(--soft) 100%); }
+  .app-grid { display: grid; grid-template-columns: minmax(0,.95fr) minmax(0,1.05fr); gap: 56px; align-items: start; }
+  .app-id { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+  .app-id img { width: 76px; height: 76px; border-radius: 18px; border: 1px solid var(--line); }
+  .app-id h3 { margin: 0; font-size: 24px; }
+  .app-id .meta { font-size: 14px; color: var(--muted); }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; padding: 0; list-style: none; }
+  .facts li { font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: #fff; border: 1px solid var(--line); }
+  .features { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 14px; }
+  .features li { display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; }
+  .features .ic { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, var(--orange), var(--red)); color: #fff; display: grid; place-items: center; font-size: 18px; }
+  .features b { display: block; font-size: 16px; }
+  .features span { color: var(--muted); font-size: 15px; }
+  .publisher { font-size: 13px; color: var(--muted); margin-top: 16px; }
+
+  .shots {
+    display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+    padding: 6px 4px 18px; margin: 0 -4px;
+    scrollbar-width: thin;
+  }
+  .shots img {
+    flex: 0 0 auto; width: 210px; border-radius: 24px; scroll-snap-align: start;
+    border: 1px solid var(--line); box-shadow: 0 20px 40px -24px rgba(60,20,20,.35);
+    background: #fff;
+  }
+  .shots-hint { font-size: 13px; color: var(--muted); }
+  @media (max-width: 960px) { .app-grid { grid-template-columns: minmax(0,1fr); gap: 36px; } .shots img { width: 180px; } }
+
+  /* Contact */
+  .contact-card {
+    display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center;
+    padding: 40px; border-radius: 28px;
+    background: linear-gradient(135deg, var(--red) 0%, var(--red-deep) 100%);
+    color: #fff;
+  }
+  .contact-card h2 { color: #fff; margin-top: 0; }
+  .contact-card p { margin: 0; opacity: .9; }
+  .contact-links { display: flex; flex-wrap: wrap; gap: 12px; }
+  .contact-links a { background: #fff; color: var(--red-deep); }
+  .contact-links a.alt { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.5); }
+  @media (max-width: 760px) { .contact-card { grid-template-columns: minmax(0,1fr); padding: 28px; } }
+
+  footer { padding: 32px 0 40px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+  .foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+  .foot a { color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="POPO Service">
+      <img src="assets/popo-logo.jpg" alt="Logo POPO Service">
+      <span>POPO<small>Service Company Limited</small></span>
+    </a>
+    <nav class="menu" aria-label="Điều hướng chính">
+      <a href="#kenh">Kênh mua sắm</a>
+      <a href="#app">PewPew App</a>
+      <a href="#lien-he">Liên hệ</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Dịch vụ mua sắm</span>
+        <h1>Mua sắm và kết nối cùng <em>POPO Service</em></h1>
+        <p class="lead">Theo dõi và mua hàng qua các kênh TikTok của POPO, đồng thời trải nghiệm giải trí, mua sắm và cộng đồng PewPew ngay trên PewPew App.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#app">Khám phá PewPew App</a>
+          <a class="btn btn-ghost" href="#kenh">Xem kênh mua sắm</a>
+        </div>
+      </div>
+      <img class="hero-logo" src="assets/popo-logo.jpg" alt="POPO Service Company Limited" width="720" height="720">
+    </div>
+  </div>
+
+  <section id="kenh">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">Follow &amp; mua hàng</div>
+        <h2>Kênh mua sắm của POPO</h2>
+        <p>Mua hàng trực tiếp qua các kênh TikTok dưới đây.</p>
+      </div>
+      <div class="channels">
+        <a class="channel" href="https://www.tiktok.com/@realpewpew" target="_blank" rel="noopener">
+          <div class="tt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.6 2.6 0 0 1-2.6-2.6 2.6 2.6 0 0 1 3.4-2.47V9.67a5.73 5.73 0 0 0-.8-.06 5.69 5.69 0 0 0-5.69 5.69A5.69 5.69 0 0 0 9.86 21a5.69 5.69 0 0 0 5.69-5.69V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.29 4.29 0 0 1-3.25-1.48z"/></svg></div>
+          <h3>Tạp Hoá Pewpew</h3>
+          <div class="handle">@realpewpew</div>
+          <div class="go">Xem trên TikTok →</div>
+        </a>
+        <a class="channel" href="https://www.tiktok.com/@xoai.phm" target="_blank" rel="noopener">
+          <div class="tt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.6 2.6 0 0 1-2.6-2.6 2.6 2.6 0 0 1 3.4-2.47V9.67a5.73 5.73 0 0 0-.8-.06 5.69 5.69 0 0 0-5.69 5.69A5.69 5.69 0 0 0 9.86 21a5.69 5.69 0 0 0 5.69-5.69V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.29 4.29 0 0 1-3.25-1.48z"/></svg></div>
+          <h3>XoaiPham</h3>
+          <div class="handle">@xoai.phm</div>
+          <div class="go">Xem trên TikTok →</div>
+        </a>
+        <a class="channel" href="https://www.tiktok.com/@bsthangdinhduong" target="_blank" rel="noopener">
+          <div class="tt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.6 2.6 0 0 1-2.6-2.6 2.6 2.6 0 0 1 3.4-2.47V9.67a5.73 5.73 0 0 0-.8-.06 5.69 5.69 0 0 0-5.69 5.69A5.69 5.69 0 0 0 9.86 21a5.69 5.69 0 0 0 5.69-5.69V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.29 4.29 0 0 1-3.25-1.48z"/></svg></div>
+          <h3>Thắng Dinh Dưỡng</h3>
+          <div class="handle">@bsthangdinhduong</div>
+          <div class="go">Xem trên TikTok →</div>
+        </a>
+        <a class="channel" href="https://www.tiktok.com/@binochemtienganh" target="_blank" rel="noopener">
+          <div class="tt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5 2.6 2.6 0 0 1-2.6-2.6 2.6 2.6 0 0 1 3.4-2.47V9.67a5.73 5.73 0 0 0-.8-.06 5.69 5.69 0 0 0-5.69 5.69A5.69 5.69 0 0 0 9.86 21a5.69 5.69 0 0 0 5.69-5.69V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.29 4.29 0 0 1-3.25-1.48z"/></svg></div>
+          <h3>Bino</h3>
+          <div class="handle">@binochemtienganh</div>
+          <div class="go">Xem trên TikTok →</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="app" class="app">
+    <div class="wrap app-grid">
+      <div>
+        <div class="sec-head" style="margin-bottom:28px">
+          <div class="kicker">Ứng dụng</div>
+          <h2>PewPew App: một chạm kết nối, ngàn niềm vui</h2>
+          <p>Ứng dụng cộng đồng và chăm sóc, hậu mãi cho khách hàng trải nghiệm các dịch vụ cùng PewPew.</p>
+        </div>
+        <div class="app-id">
+          <img src="assets/pewpew-icon.png" alt="Biểu tượng PewPew App" width="512" height="512">
+          <div>
+            <h3>PewPew App</h3>
+            <div class="meta">Mạng xã hội · iPhone &amp; iPad</div>
+          </div>
+        </div>
+        <ul class="facts">
+          <li>Miễn phí</li>
+          <li>4.7★ trên App Store</li>
+          <li>iOS 15.0 trở lên</li>
+          <li>Tiếng Việt</li>
+        </ul>
+        <ul class="features">
+          <li><div class="ic" aria-hidden="true">🎮</div><div><b>Giải trí</b><span>Chơi trò chơi, minigame, xem và tương tác nội dung.</span></div></li>
+          <li><div class="ic" aria-hidden="true">🛍️</div><div><b>Mua hàng trực tuyến</b><span>Mua sắm ngay trong ứng dụng.</span></div></li>
+          <li><div class="ic" aria-hidden="true">🔔</div><div><b>Tin mới nhất về PewPew</b><span>Tìm kiếm, cập nhật và nhận thông báo trực tiếp về livestream, hình ảnh, video và sự kiện.</span></div></li>
+          <li><div class="ic" aria-hidden="true">🏪</div><div><b>Sản phẩm, dịch vụ đối tác</b><span>Bánh mì PewPew, Giặt là PewPew, PewPum Hair Studio/Barbershop, Gosuzone, Tạp hoá PewPew, Tạp hoá Giá Zẻ, Tạp hoá PewPew Shop và nhiều đối tác khác.</span></div></li>
+          <li><div class="ic" aria-hidden="true">👥</div><div><b>Cộng đồng PewPew và Pewnoy</b><span>Tham gia, giao lưu cùng cộng đồng.</span></div></li>
+          <li><div class="ic" aria-hidden="true">💬</div><div><b>Chăm sóc khách hàng 1 chạm</b><span>Liên hệ hỗ trợ nhanh ngay trong ứng dụng.</span></div></li>
+        </ul>
+        <a class="btn btn-store" href="https://apps.apple.com/vn/app/pewpew-app/id6759076616" target="_blank" rel="noopener" aria-label="Tải PewPew App trên App Store">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.02-2.27 1.86-3.36 1.94-3.41-1.06-1.55-2.71-1.76-3.29-1.78-1.4-.14-2.73.82-3.44.82-.71 0-1.8-.8-2.96-.78-1.52.02-2.93.89-3.71 2.25-1.58 2.75-.4 6.81 1.14 9.04.75 1.09 1.65 2.31 2.82 2.27 1.13-.05 1.56-.73 2.93-.73 1.36 0 1.75.73 2.95.71 1.22-.02 1.99-1.11 2.73-2.2.86-1.26 1.22-2.49 1.24-2.55-.03-.01-2.37-.91-2.35-3.64zM14.12 5.93c.62-.76 1.04-1.8.93-2.85-.9.04-1.99.6-2.63 1.35-.58.67-1.08 1.74-.95 2.77 1 .08 2.03-.51 2.65-1.27z"/></svg>
+          <span><small>Tải về trên</small><b>App Store</b></span>
+        </a>
+        <p class="publisher">Nhà phát hành trên App Store: PEWPEW SERVICES ONE MEMBER COMPANY LIMITED</p>
+      </div>
+      <div>
+        <div class="shots" aria-label="Ảnh màn hình PewPew App">
+          <img src="assets/app-shot-1.jpg" alt="Màn hình chào mừng PewPew App" width="600" height="1299" loading="lazy">
+          <img src="assets/app-shot-2.jpg" alt="Trang chủ với nội dung cộng đồng PewPew" width="600" height="1299" loading="lazy">
+          <img src="assets/app-shot-3.jpg" alt="Danh mục dịch vụ quanh bạn" width="600" height="1299" loading="lazy">
+          <img src="assets/app-shot-4.jpg" alt="Mua sắm trực tuyến trong ứng dụng" width="600" height="1299" loading="lazy">
+          <img src="assets/app-shot-5.jpg" alt="Sự kiện và trò chơi trong ứng dụng" width="600" height="1299" loading="lazy">
+        </div>
+        <div class="shots-hint">Vuốt ngang để xem thêm ảnh màn hình</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="lien-he">
+    <div class="wrap">
+      <div class="contact-card">
+        <div>
+          <h2>Liên hệ POPO Service</h2>
+          <p>Mọi câu hỏi về sản phẩm, đơn hàng hay hợp tác, hãy gửi email hoặc nhắn tin cho chúng tôi.</p>
+        </div>
+        <div class="contact-links">
+          <a class="btn" href="mailto:lienhe@ctypopo.com">lienhe@ctypopo.com</a>
+          <a class="btn alt" href="https://m.me/poposervicecompanylimited" target="_blank" rel="noopener">Nhắn tin Messenger</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>© 2026 POPO Service Company Limited</div>
+    <div><a href="https://www.facebook.com/poposervicecompanylimited/" target="_blank" rel="noopener">Facebook</a> · <a href="mailto:lienhe@ctypopo.com">lienhe@ctypopo.com</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
