@@ -40,7 +40,7 @@
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
-  img { max-width: 100%; display: block; }
+  img { max-width: 100%; height: auto; display: block; }
   a { color: inherit; }
   .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
 
@@ -142,7 +142,7 @@
     padding: 6px 4px 18px; margin: 0 -4px;
     scrollbar-width: thin;
   }
-  .shots img {
+  .shots img { aspect-ratio: 600 / 1299;
     flex: 0 0 auto; width: 210px; border-radius: 24px; scroll-snap-align: start;
     border: 1px solid var(--line); box-shadow: 0 20px 40px -24px rgba(60,20,20,.35);
     background: #fff;
